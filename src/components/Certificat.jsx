@@ -3,6 +3,8 @@ import "../components/certificat.css";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
+const NAME = "Diango Boubacar";
+
 const Certificat = () => {
   const certificatRef = useRef(); // Référence pour cibler le certificat
 
@@ -17,7 +19,8 @@ const Certificat = () => {
     const pdfHeight = pdf.internal.pageSize.getHeight();
 
     pdf.addImage(imageData, "PNG", 0, 0, pdfWidth, pdfHeight);
-    pdf.save("certificat.pdf");
+    // Le nom de sorti du pdf
+    pdf.save(`${NAME} certificat.pdf`);
   };
 
   return (
@@ -34,35 +37,38 @@ const Certificat = () => {
 
         <div className="certificat-content">
           <p className="certificat-text">Ce certificat est décerné à</p>
-          <h2 className="student-name">Amadou Traoré</h2>
+          <h2 className="student-name"> {NAME} </h2>
           <p className="certificat-description">
             Pour avoir complété avec succès la formation
           </p>
-          <h3 className="formation-title">Développement Web Full Stack</h3>
-          <p className="formation-duration">Formation de 6 mois - 600 heures</p>
+          <h3 className="formation-title">Burreautique et Sage</h3>
+          <p className="formation-duration">Formation de 3 mois - 72 heures</p>
 
           <div className="competences">
             <h4>Compétences acquises :</h4>
             <ul>
-              <li>HTML5, CSS3, JavaScript</li>
-              <li>React.js, Node.js</li>
-              <li>MongoDB, MySQL</li>
-              <li>Git, DevOps</li>
+              <li>Sage Gestion Commerciale</li>
+              <li>Sage Comptabilité</li>
+              <li>Word</li>
+              <li>Excel</li>
+              <li>PowerPoint</li>
+              {/* <li>Git, DevOps</li>
+              <li>Notion</li>
+              <li>Obsidian</li> */}
             </ul>
           </div>
 
           <div className="certificat-date">
-            <p>Délivré le 15 Mars 2024 à Bamako, Mali</p>
+            <p>Délivré le {new Date().toLocaleDateString()} à Bamako, Mali</p>
           </div>
 
           <div className="signatures">
-            <div className="signature">
+            <div className="certificat-footer">
+              <p className="certificat-id">Certificat N° : MC-2024-0002</p>
+            </div>
+            <div className="signature-dg">
               <p>Directeur de MaliCode</p>
             </div>
-          </div>
-
-          <div className="certificat-footer">
-            <p className="certificat-id">Certificat N° : MC-2024-0123</p>
           </div>
         </div>
       </div>
